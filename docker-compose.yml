@@ -1,0 +1,10 @@
+version: '3'
+services:
+  openam:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8024:8080"
+    extra_hosts:
+      - "openam.example.com:127.0.0.1"
