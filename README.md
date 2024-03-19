@@ -16,6 +16,7 @@ After pitching up Docker, I realized I can automate these steps so that I take a
 ## The What
 
 This repo contains a list of files as follows:
+
     - Dockerfile: Docker image configuration
     - docker-compose.yml: Docker container configuration (added to include the port forwarding and extra hosts)
     - /scripts
