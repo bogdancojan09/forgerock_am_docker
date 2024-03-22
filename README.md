@@ -48,7 +48,7 @@ Development was done using a WSL + Docker Engine setup. Assuming you have WSL se
 
 (not in order, might suffer changes)
 
-~~1. Change Session Cookie name from iPlanetDirectoryPro (default name)~~ **Done, check #1**
+~~1. Change Session Cookie name from iPlanetDirectoryPro (default name)~~ **Done, check [#1](https://github.com/bogdancojan09/forgerock_am_docker/pull/1)**
 
 2. Set up OAuth2 client
 3. Set up new Realm, different from the root/default one
