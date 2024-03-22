@@ -3,8 +3,10 @@
 ## About
 
 This is a "dockerized" version of a Java (OpenJDK) 11, Apache Tomcat 8.5 and ForgeRock AM 7.3.1 (with Amster 7.4).
+
 Its main purpose is to serve as a faster way to set up Access Manager tool of ForgeRock, to avoid manual steps such as local installments of Java or Apache Tomcat.
-For now, this setup is meant to be used for testing and local environments; will take into consideration also upgrading it for production use. 
+
+For now, this setup is meant to be used for testing and local environments; will take into consideration also upgrading it for production use.
 
 ## The Why
 
@@ -17,11 +19,13 @@ After pitching up Docker, I realized I can automate these steps so that I take a
 
 This repo contains a list of files as follows:
 
-    - Dockerfile: Docker image configuration
-    - docker-compose.yml: Docker container configuration (added to include the port forwarding and extra hosts)
-    - /scripts
-        -> create_authentication_tree_script.sh: Bash script that sets up an authentication tree within the installed AM client 
-        -> entrypoint.sh: Bash script that starts Apache Tomcat service and adds the AM default configuration 
+- Dockerfile: Docker image configuration
+- docker-compose.yml: Docker container configuration (added to include the port forwarding and extra hosts)
+- /scripts:
+  
+    -> create_authentication_tree_script.sh: Bash script that sets up an authentication tree within the installed AM client
+
+    -> entrypoint.sh: Bash script that starts Apache Tomcat service and adds the AM default configuration
 
 ## The How
 
@@ -35,14 +39,17 @@ Development was done using a WSL + Docker Engine setup. Assuming you have WSL se
 
 ## Current "Magic"
 
-1. ForgeRock AM is deployed into Apache Tomcat
-2. Using Amster, AM is installed with default configuration (serverURL and amAdmin's password)
-3. Using create_authentication_tree_script.sh, the myAuthenticationTree authentication tree and its nodes are created within the AM client. This is created to be used after integrating with your application so that users can login.
+1. ForgeRock AM is deployed into Apache Tomcat;
+2. Using Amster, AM is installed with default configuration (serverURL and amAdmin's password);
+3. Using Amster, user session cookie name has been changed to "myNewCookie";
+4. Using create_authentication_tree_script.sh, the myAuthenticationTree authentication tree and its nodes are created within the AM client. This is created to be used after integrating with your application so that users can login.
 
 ## Future "Magic"
+
 (not in order, might suffer changes)
 
-1. Change Session Cookie name from iPlanetDirectoryPro (default name)
+~~1. Change Session Cookie name from iPlanetDirectoryPro (default name)~~ **Done, check #1**
+
 2. Set up OAuth2 client
 3. Set up new Realm, different from the root/default one
 4. Dynamically set up everything (env vars maybe?)
