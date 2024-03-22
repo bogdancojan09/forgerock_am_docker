@@ -7,7 +7,6 @@
 check_tomcat_started() {
     while true; do
         response=$(curl --write-out '%{http_code}' --silent --output /dev/null http://openam.example.com:8080/openam/)
-        echo $response
         if [ "$response" -ne 0  ] && [ "$response" -le 302 ]; then
             echo "Tomcat started successfully"
             break

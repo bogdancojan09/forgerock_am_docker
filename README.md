@@ -26,6 +26,7 @@ This repo contains a list of files as follows:
 ## The How
 
 Before booting up the setup, make sure you have installed the WAR file for AM (ideally v7.3.1) - and rename it - and the zipped version of Amster (v7.4.0) on your local setup. Once installed, add them into the /target directory.
+
 **(! You might need to create a ForgeRock account before installing the products mentioned above, even though these do not need any subscription or pay-to-use features.)**
 
 Development was done using a WSL + Docker Engine setup. Assuming you have WSL set up with Docker Engine within, you can just build this using this command (--progress plain flag-value pair can be used for build status tracking):
