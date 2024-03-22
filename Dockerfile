@@ -18,6 +18,8 @@ FROM tomcat:8.5.50-jdk11-openjdk
 
 EXPOSE 8080
 
+ARG AM_REMOTE_FILENAME
+
 ENV CATALINA_OPTS -Xms512m -Xmx1024m -XX:MaxPermSize=256m
 ENV JAVA_OPTS -Djava.security.egd=file:/dev/./urandom
 ENV CATALINA_HOME /usr/local/tomcat
@@ -29,7 +31,7 @@ ENV CATALINA_TMPDIR /usr/local/tomcat/temp
 RUN chmod 644 /usr/local/openjdk-11/lib/security/cacerts
 
 # copy the AM war file from the target directory to the webapps directory
-COPY target/*.war /usr/local/tomcat/webapps/
+COPY target/*.war /usr/local/tomcat/webapps/${AM_REMOTE_FILENAME}.war
 
 # setup Amster
 # In this step, we should:

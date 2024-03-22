@@ -3,8 +3,15 @@ services:
   openam:
     build:
       context: .
+      args:
+        - AM_REMOTE_FILENAME=${AM_REMOTE_FILENAME}
       dockerfile: Dockerfile
+    environment:
+      - AM_HOSTNAME=${AM_HOSTNAME}
+      - AM_LOCAL_PORT=${AM_LOCAL_PORT}
+      - AM_REMOTE_PORT=${AM_REMOTE_PORT}
+      - AM_REMOTE_FILENAME=${AM_REMOTE_FILENAME}
     ports:
-      - "8024:8080"
+      - "${AM_LOCAL_PORT}:${AM_REMOTE_PORT}"
     extra_hosts:
-      - "openam.example.com:127.0.0.1"
+      - "${AM_HOSTNAME}:127.0.0.1"
