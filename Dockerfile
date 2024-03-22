@@ -46,7 +46,9 @@ RUN apt-get update && apt-get install -y unzip && apt-get install -y jq && apt-g
 
 COPY scripts/entrypoint.sh /root/
 COPY scripts/create_authentication_tree_script.sh /root/
+COPY scripts/change_session_cookie_name.sh /root/
 RUN  chmod +x /root/entrypoint.sh
 RUN  chmod +x /root/create_authentication_tree_script.sh
+RUN  chmod +x /root/change_session_cookie_name.sh
 
 CMD ./entrypoint.sh

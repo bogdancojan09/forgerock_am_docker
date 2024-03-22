@@ -65,7 +65,7 @@ echo "################################################################## Setting
 # Step 2: Define the components nodes: Username Collector, Password Collector
 putusernamecollectornoderesponse=$(curl -X PUT \
     -L "http://openam.example.com:8080/openam/json/realms/root/realm-config/authentication/authenticationtrees/nodes/UsernameCollectorNode/$USERNAME_COLLECTOR_ID" \
-    -H "iPlanetDirectoryPro: $admintoken" \
+    -H "myNewCookie: $admintoken" \
     -H "Content-Type: application/json" \
     -H "Accept-API-Version: resource=1.0" \
     -H "If-None-Match: *" \
@@ -81,7 +81,7 @@ check_response_code $putusernamecollectornoderesponse
 
 putpasswordcollectornoderesponse=$(curl -X PUT \
     -L "http://openam.example.com:8080/openam/json/realms/root/realm-config/authentication/authenticationtrees/nodes/PasswordCollectorNode/$PASSWORD_COLLECTOR_ID" \
-    -H "iPlanetDirectoryPro: $admintoken" \
+    -H "myNewCookie: $admintoken" \
     -H "Content-Type: application/json" \
     -H "Accept-API-Version: resource=1.0" \
     -H "If-None-Match: *" \
@@ -99,7 +99,7 @@ echo "################################################################## Setting
 # Step 3: Define the PageNode using the components defined in the previous step
 putpagenoderesponse=$(curl -X PUT \
     -L "http://openam.example.com:8080/openam/json/realms/root/realm-config/authentication/authenticationtrees/nodes/PageNode/$PAGE_NODE_ID" \
-    -H "iPlanetDirectoryPro: $admintoken" \
+    -H "myNewCookie: $admintoken" \
     -H "Content-Type: application/json" \
     -H "Accept-API-Version: resource=1.0" \
     -H "If-None-Match: *" \
@@ -134,7 +134,7 @@ echo "################################################################## Setting
 # Step 4: Define the Data Store Decision Node
 putdatastoredecisionnode=$(curl -X PUT \
     -L "http://openam.example.com:8080/openam/json/realms/root/realm-config/authentication/authenticationtrees/nodes/DataStoreDecisionNode/$DATASTORE_DECISION_ID" \
-    -H "iPlanetDirectoryPro: $admintoken" \
+    -H "myNewCookie: $admintoken" \
     -H "Content-Type: application/json" \
     -H "Accept-API-Version: resource=1.0" \
     -H "If-None-Match: *" \
@@ -152,7 +152,7 @@ echo "################################################################## Setting
 # Step 5: Define the authentication tree containing the entry node as the Page Node. The tree should have the connections set to static nodes Success and Failure. Its name should be "myAuthenticationTree"
 curl -X PUT \
     -L "http://openam.example.com:8080/openam/json/realms/root/realm-config/authentication/authenticationtrees/trees/myAuthenticationTree" \
-    -H "iPlanetDirectoryPro: $admintoken" \
+    -H "myNewCookie: $admintoken" \
     -H "Content-Type: application/json" \
     -H "Accept-API-Version: resource=1.0" \
     -H "If-None-Match: *" \
