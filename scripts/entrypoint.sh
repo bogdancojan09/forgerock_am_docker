@@ -6,7 +6,7 @@
 # If it is not, it means that Tomcat has not started yet and the script should wait for it.
 check_tomcat_started() {
     while true; do
-        response=$(curl --write-out '%{http_code}' --silent --output /dev/null http://$AM_HOSTNAME:$AM_REMOTE_PORT/${AM_REMOTE_FILENAME}/)
+        response=$(curl --write-out '%{http_code}' --silent --output /dev/null http://${AM_HOSTNAME}:${AM_REMOTE_PORT}/${AM_REMOTE_FILENAME}/)
         echo $response
         if [ "$response" -ne 0  ] && [ "$response" -le 302 ]; then
             echo "Tomcat started successfully"
@@ -24,7 +24,7 @@ catalina.sh start
 # Wait for Tomcat to start
 check_tomcat_started
 
-./amster/amster <<< "install-openam --serverUrl http://$AM_HOSTNAME:$AM_REMOTE_PORT/${AM_REMOTE_FILENAME} --adminPwd password --acceptLicense"
+./amster/amster <<< "install-openam --serverUrl http://${AM_HOSTNAME}:${AM_REMOTE_PORT}/${AM_REMOTE_FILENAME} --adminPwd ${AM_ADMIN_PASSWORD} --acceptLicense"
 
 # Here we should run the change_session_cookie_name.sh script so that we change the initial name of the user session cookie
 ./change_session_cookie_name.sh 

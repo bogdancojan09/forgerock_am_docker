@@ -46,20 +46,20 @@ fi
 # Step 2 and Step 3: Connect to the OpenAM server using Amster and the generated private key pair, and export the configuration of the OpenAM server
 echo "################################################################## Connecting to the OpenAM server using Amster..."
 ./amster/amster <<EOF
-connect -k .ssh/id_rsa http://openam.example.com:8080/openam
+connect -k .ssh/id_rsa http://$AM_HOSTNAME:$AM_REMOTE_PORT/$AM_REMOTE_FILENAME
 export-config --path /openam/export
 EOF
 
 # Step 4: Change the session cookie name in the configuration files
 echo "################################################################## Changing the session cookie name in the configuration files..."
 # Change the session cookie name in the global/DefaultSecurityProperties.json file using jq
-contents="$(jq '.data."amconfig.header.cookie"."com.iplanet.am.cookie.name" = "myNewCookie"' /openam/export/global/DefaultSecurityProperties.json)"
+contents="$(jq '.data."amconfig.header.cookie"."com.iplanet.am.cookie.name" = "'"$AM_SESSION_COOKIE_NAME"'"' /openam/export/global/DefaultSecurityProperties.json)"
 echo -E "${contents}" > /openam/export/global/DefaultSecurityProperties.json
 
 # Step 5: Import the configuration back to the OpenAM server
 echo "################################################################## Importing the configuration back to the OpenAM server..."
 ./amster/amster <<EOF
-connect -k .ssh/id_rsa http://openam.example.com:8080/openam
+connect -k .ssh/id_rsa http://$AM_HOSTNAME:$AM_REMOTE_PORT/$AM_REMOTE_FILENAME
 import-config --path /openam/export
 EOF
 
