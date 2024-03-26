@@ -1,22 +1,9 @@
 #!/usr/bin/env bash
 
-# Auxiliary function to check if Tomcat started successfully.
-# It will check if the response code is minimum 302, which means that the request was redirected to the login page.
-# If it is, it means that Tomcat started successfully and the script should continue.
-# If it is not, it means that Tomcat has not started yet and the script should wait for it.
-check_tomcat_started() {
-    while true; do
-        response=$(curl --write-out '%{http_code}' --silent --output /dev/null http://${AM_HOSTNAME}:${AM_REMOTE_PORT}/${AM_REMOTE_FILENAME}/)
-        echo $response
-        if [ "$response" -ne 0  ] && [ "$response" -le 302 ]; then
-            echo "Tomcat started successfully"
-            break
-        else
-            echo "Waiting for Tomcat..."
-            sleep 5
-        fi
-    done
-}
+# Import the auxiliary functions
+source ./utils/auxiliary_functions.sh
+
+validate_env_variables
 
 # Start Tomcat
 catalina.sh start
