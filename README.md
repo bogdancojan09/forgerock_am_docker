@@ -29,13 +29,15 @@ This repo contains a list of files as follows:
 
 ## The How
 
-Before booting up the setup, make sure you have installed the WAR file for AM (ideally v7.3.1) - and rename it - and the zipped version of Amster (v7.4.0) on your local setup. Once installed, add them into the /target directory.
+  1. Before booting up the setup, make sure you have installed the WAR file for AM (ideally v7.3.1) - and rename it - and the zipped version of Amster (v7.4.0) on your local setup. Once installed, add them into the /target directory.
 
-**(! You might need to create a ForgeRock account before installing the products mentioned above, even though these do not need any subscription or pay-to-use features.)**
+  **(! You might need to create a ForgeRock account before installing the products mentioned above, even though these do not need any subscription or pay-to-use features.)**
 
-Development was done using a WSL + Docker Engine setup. Assuming you have WSL set up with Docker Engine within, you can just build this using this command (--progress plain flag-value pair can be used for build status tracking):
+  2. Make sure you create your own .env file containing the variables that are listed inside the .env.sample with values you want to add.
 
-    docker-compose build [--progress plain] && docker-compose up -d
+  3. Development was done using a WSL + Docker Engine setup. Assuming you have WSL set up with Docker Engine within, you can just build this using this command (--progress plain flag-value pair can be used for build status tracking):
+
+      docker-compose build [--progress plain] && docker-compose up -d
 
 ## Current "Magic"
 
@@ -52,4 +54,4 @@ Development was done using a WSL + Docker Engine setup. Assuming you have WSL se
 
 2. Set up OAuth2 client
 3. Set up new Realm, different from the root/default one
-4. Dynamically set up everything (env vars maybe?)
+~~4. Dynamically set up everything (env vars maybe?)~~ **Done, check a version in [#2](https://github.com/bogdancojan09/forgerock_am_docker/pull/2)**
