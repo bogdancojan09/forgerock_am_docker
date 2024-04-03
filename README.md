@@ -57,4 +57,4 @@ This repo contains a list of files as follows:
    
 ~~4. Dynamically set up everything (env vars maybe?)~~ **Done, check a version in [#2](https://github.com/bogdancojan09/forgerock_am_docker/pull/2)**
 
-5. Restructure scripts runs when restarting the container locally
+~~5. Restructure scripts runs when restarting the container locally~~ **Done, check [#3](https://github.com/bogdancojan09/forgerock_am_docker/pull/3)**
