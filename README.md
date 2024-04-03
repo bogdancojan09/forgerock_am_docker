@@ -56,3 +56,4 @@ This repo contains a list of files as follows:
 3. Set up new Realm, different from the root/default one
    
 ~~4. Dynamically set up everything (env vars maybe?)~~ **Done, check a version in [#2](https://github.com/bogdancojan09/forgerock_am_docker/pull/2)**
+5. Restructure scripts runs when restarting the container locally
