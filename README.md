@@ -1,5 +1,7 @@
 # ForgeRock Access Manager (AM) - Docker Setup
 
+**UPDATE:** Wiki available now! Check it out: https://github.com/bogdancojan09/forgerock_am_docker/wiki
+
 ## About
 
 This is a "dockerized" version of a Java (OpenJDK) 11, Apache Tomcat 8.5 and ForgeRock AM 7.3.1 (with Amster 7.4).
